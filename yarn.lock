@@ -2358,6 +2358,10 @@ repeat-string@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
 
+require-text@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/require-text/-/require-text-0.0.1.tgz#cde7a3e443b71c14e1ec0d5cefcfcd418dffd66e"
+
 require_optional@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require_optional/-/require_optional-1.0.1.tgz#4cf35a4247f64ca3df8c2ef208cc494b1ca8fc2e"

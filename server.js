@@ -1,5 +1,12 @@
-const { ApolloServer, gql } = require('apollo-server');
+const requireText = require('require-text');
+
+const { ApolloServer } = require('apollo-server');
 const mongoose = require('mongoose');
+
+const resolvers = require('./resolvers');
+
+const User = require('./models/User');
+const Post = require('./models/Post');
 
 require('dotenv').config({ path: 'variables.env'});
 
@@ -8,28 +15,16 @@ mongoose
   .then(() => console.log('DB connected'))
   .catch(err => console.err(err));
 
-const typeDefs = gql(`
-type Todo {
-  task: String
-  completed: Boolean
-}
-
-type Query {
-  getTodos: [Todo]
-}
-`);
-
-const resolvers = {
-  Query: {
-    getTodos: () => todos
-  }
-};
-
-
+const typeDefs = requireText('./typeDefs.graphql', require);
+// const typeDefs = gql(schema);
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: {
+    User,
+    Post
+  }
 });
 
 server.listen().then(({ url }) => {
