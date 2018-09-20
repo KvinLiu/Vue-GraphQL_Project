@@ -8,9 +8,9 @@
         <h1 class="title pl-3">VueShare</h1>
       </router-link>
     </v-toolbar>
-
+    
     <v-divider></v-divider>
-
+    
     <!-- Side Navbar Links -->
     <v-list>
       <v-list-tile ripple v-for="item in sideNavItems" :key="item.title" :to="item.link">
@@ -23,6 +23,7 @@
       </v-list-tile>
     </v-list>
   </v-navigation-drawer>
+
   <!-- Horizontal Navbar -->
   <v-toolbar fixed color="primary" dark>
     <v-toolbar-side-icon @click="toggleSideNav"></v-toolbar-side-icon>
@@ -33,7 +34,8 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <!-- Search Input -->
-    <v-text-field flex
+    <v-text-field class="pt-0"
+                  flex
                   prepend-icon="search"
                   placeholder="Search Post"
                   color="accent"
@@ -56,7 +58,9 @@
   <!-- App Content -->
   <main>
     <v-container class="mt-4">
-      <router-view></router-view>
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
     </v-container>
   </main>
 </v-app>
@@ -117,3 +121,18 @@
     }
   }
 </script>
+
+<style>
+  .fade-enter-active,
+  .fade-leave-active {
+      transition-property: opacity;
+      transition-duration: 0.25s;
+  }
+  .fade-enter-active {
+      transition-delay: 0.25s;
+  }
+  .fade-enter,
+  .fade-leave-active {
+      opacity: 0;
+  }
+</style>
